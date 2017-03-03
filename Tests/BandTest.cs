@@ -66,5 +66,22 @@ namespace BandTracker.Objects
             List<Band> actualResult = Band.GetAll();
             List<Band> expectedResult = new List<Band>{newBand};
         }
+
+        //Checks that database id is assigned when saved to db
+        [Fact]
+        public void Save_ForBand_AssignsDatabaseId()
+        {
+            //Arrange
+            Band testBand = new Band("Pajama Funnel");
+
+            //Act
+            newBand.Save();
+            Band savedBand = Band.GetAll()[0];
+
+            //Assert
+            Assert.Equal(testBand, savedBand);
+        }
+
+        //Checks that GetAll method works for multiple instances
     }
 }

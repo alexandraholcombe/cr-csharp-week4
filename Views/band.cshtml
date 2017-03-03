@@ -4,7 +4,15 @@
 
 <h1>@Model["band"].GetName()</h1>
 
-<form action="index.html" method="post">
+<ul>
+    @foreach(var venue in @Model["bandVenues"])
+    {
+        <li><a href="/venues/@venue.GetId()">@venue.GetName()</a></li>
+    }
+</ul>
+
+<form action="/bands/@Model["band"].GetId()" method="post">
+    <input type="hidden" name="band" value="@Model["band"].GetId()">
     <select name="venue">
         @foreach (var venue in @Model["venues"])
         {

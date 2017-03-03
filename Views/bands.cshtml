@@ -6,7 +6,7 @@
 <ul class="collapsible popout" data-collapsible="accordion">
     @foreach (var band in @Model)
     {
-        <li><a href="#">@band.GetName()</a></li>
+        <li><a href="/bands/@band.GetId()">@band.GetName()</a></li>
     }
 </ul>
 

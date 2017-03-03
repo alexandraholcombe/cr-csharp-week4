@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace BandTracker.Objects
 {
-    public class BandTracker: IDisposable
+    public class BandTest: IDisposable
     {
         public BandTest()
         {
@@ -24,7 +24,7 @@ namespace BandTracker.Objects
         public void GetAll_ForNoBands_EmptyList()
         {
             //Arrange, Act, Assert
-            List<Band> actualResult = Bands.GetAll();
+            List<Band> actualResult = Band.GetAll();
             List<Band> expectedResult = new List<Band>{};
 
             Assert.Equal(expectedResult, actualResult);

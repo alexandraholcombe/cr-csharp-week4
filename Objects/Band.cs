@@ -38,5 +38,38 @@ namespace BandTracker.Objects
             conn.Close();
         }
 
+        //Output all rows in bands table to List
+        public static List<Band> GetAll()
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM bands;", conn);
+            SqlDataReader rdr = cmd.ExecuteReader();
+
+            List<Band> allBands = new List<Band>{};
+
+            while(rdr.Read())
+            {
+                int id = rdr.GetInt32(0);
+                string name = rdr.GetString(1);
+
+                Band newBand = new Band(name, id);
+                allBands.Add(newBand);
+            }
+
+            if(rdr != null)
+            {
+                rdr.Close();
+            }
+
+            if(conn != null)
+            {
+                conn.Close();
+            }
+
+            return allBands;
+        }
+
     }
 }

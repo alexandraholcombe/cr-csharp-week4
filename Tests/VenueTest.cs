@@ -123,7 +123,30 @@ namespace BandTracker.Objects
             string actualResult = testVenue.GetName();
             string expectedResult = newName;
 
-            Assert.Equal(expectedResult, actualResult);            
+            Assert.Equal(expectedResult, actualResult);
+        }
+
+        //Checks that Delete method deletes row from venues table
+        [Fact]
+        public void Delete_ForVenue_DeletesRowFromTable()
+        {
+            //Arrange
+            Venue firstVenue = new Venue("The Station");
+            Venue secondVenue = new Venue("Club Fiber");
+            Venue thirdVenue = new Venue("H20");
+
+            firstVenue.Save();
+            secondVenue.Save();
+            thirdVenue.Save();
+
+            //Act
+            firstVenue.Delete();
+
+            //Assert
+            List<Venue> actualResult = Venue.GetAll();
+            List<Venue> expectedResult = new List<Venue> {secondVenue, thirdVenue};
+
+            Assert.Equal(expectedResult, actualResult);
         }
 
         //Delete everything between tests

@@ -121,9 +121,17 @@ User can create bands and venues, then list which bands have played at venues, o
 ### Band && Venue Classes
 =========================  
 
+**The AddBands method for the Venue class will add a row to bands_venues with the given venue_id.**
+* Example Input: Venue: "The Station" Add Band: "Pajama Funnel"
+* Example Output: new row in bands_venues
+
 **The GetBands method for the Venue class will return a list of all rows in bands_venues with the given venue_id.**
 * Example Input: "The Station"
 * Example Output: `{List of bands that have played at The Station}`
+
+**The AddVenues method for the Band class will add a row to bands_venues with the given band_id.**
+* Example Input: Band: "Pajama Funnel" Add Venue: "The Station"
+* Example Output: new row in bands_venues
 
 **The GetVenues method for the Band class will return a list of all rows in bands_venues with the given band_id.**
 * Example Input: "Pajama Funnel"

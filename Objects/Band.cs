@@ -61,7 +61,7 @@ namespace BandTracker.Objects
             SqlConnection conn = DB.Connection();
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("SELECT * FROM bands;", conn);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM bands ORDER BY name;", conn);
             SqlDataReader rdr = cmd.ExecuteReader();
 
             List<Band> allBands = new List<Band>{};

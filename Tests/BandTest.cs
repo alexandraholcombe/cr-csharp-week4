@@ -75,7 +75,7 @@ namespace BandTracker.Objects
             Band testBand = new Band("Pajama Funnel");
 
             //Act
-            newBand.Save();
+            testBand.Save();
             Band savedBand = Band.GetAll()[0];
 
             //Assert
@@ -83,5 +83,20 @@ namespace BandTracker.Objects
         }
 
         //Checks that GetAll method works for multiple instances
+        [Fact]
+        public void GetAll_ForMultipleBands_ReturnsListWithAllBands()
+        {
+            //Assert
+            Band firstBand = new Band("Pajama Funnel");
+            Band secondBand = new Band("Allergy of Warm");
+            firstBand.Save();
+            secondBand.Save();
+
+            //Act, Assert
+            List<Band> actualResult = Band.GetAll();
+            List<Band> expectedResult = new List<Band> {secondBand, firstBand};
+
+            Assert.Equal(expectedResult, actualResult);
+        }
     }
 }

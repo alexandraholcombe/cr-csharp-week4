@@ -149,6 +149,50 @@ namespace BandTracker.Objects
             Assert.Equal(expectedResult, actualResult);
         }
 
+        //Checks that band is added to list of venue's bands
+        [Fact]
+        public void AddBand_ForVenueAndBand_AddsRowToJoinTable()
+        {
+            //Arrange
+            Venue testVenue = new Venue("The Station");
+            testVenue.Save();
+
+            Band testBand = new Band("Pajama Funnel");
+            testBand.Save();
+
+            //Act
+            testVenue.AddBand(testBand);
+
+            //Assert
+            List<Band> actualResult = testVenue.GetBands();
+            List<Band> expectedResult = new List<Band>{testBand};
+
+            Assert.Equal(expectedResult, actualResult);
+        }
+
+        //Checks that all added bands are returned to list of venue's bands
+        [Fact]
+        public void GetBands_ForVenue_ReturnsListOfBands()
+        {
+            //Arrange
+            Venue testVenue = new Venue("The Station");
+            testVenue.Save();
+
+            Band firstBand = new Band("Pajama Funnel");
+            firstBand.Save();
+
+            Band secondBand = new Band("Allergy of Warm");
+            secondBand.Save();
+
+            //Act
+            testVenue.AddBand(firstBand);
+            testVenue.AddBand(secondBand);
+
+            //Assert
+            List<Band> actualResult = testVenue.GetBands();
+            List<Band> expectedResult = new List<Band> {secondBand, firstBand};
+        }
+
         //Delete everything between tests
         public void Dispose()
         {

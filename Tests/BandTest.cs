@@ -19,5 +19,24 @@ namespace BandTracker.Objects
             Band.DeleteAll();
         }
 
+        //GetAll returns empty list if no bands
+        [Fact]
+        public void GetAll_ForNoBands_EmptyList()
+        {
+            //Arrange, Act, Assert
+            List<Band> actualResult = Bands.GetAll();
+            List<Band> expectedResult = new List<Band>{};
+
+            Assert.Equal(expectedResult, actualResult);
+        }
+
+
+        // //Checks for bands table has zero rows at beginning of test
+        // [Fact]
+        // public void Test_ForNoRowsInBandsTable()
+        // {
+        //     int actualResult = Band.GetAll();
+        // }
+
     }
 }

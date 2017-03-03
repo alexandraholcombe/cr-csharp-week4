@@ -1,0 +1,14 @@
+@{
+    Layout="Shared/_Layout.cshtml";
+}
+
+<h1>The Bands</h1>
+<ul>
+    @foreach (var band in @Model)
+    {
+        <li><a href="#">@band.GetName()</a></li>
+    }
+</ul>
+
+<p><a href="/">Home</a></p>
+<p><a href="/venues">View All Venues</a></p>

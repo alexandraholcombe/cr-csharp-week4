@@ -86,7 +86,7 @@ namespace BandTracker.Objects
         [Fact]
         public void GetAll_ForMultipleBands_ReturnsListWithAllBands()
         {
-            //Assert
+            //Arrange
             Band firstBand = new Band("Pajama Funnel");
             Band secondBand = new Band("Allergy of Warm");
             firstBand.Save();
@@ -97,6 +97,19 @@ namespace BandTracker.Objects
             List<Band> expectedResult = new List<Band> {secondBand, firstBand};
 
             Assert.Equal(expectedResult, actualResult);
+        }
+
+        //Checks that Find method finds correct band in databasejj
+        [Fact]
+        public void Find_ForBand_FindsBandInDatabase()
+        {
+            //Arrange
+            Band testBand = new Band("Pajama Funnel");
+            testBand.Save();
+
+            //Act, Assert
+            Band foundBand = Band.Find(testBand.GetId());
+            Assert.Equal(testBand, foundBand);
         }
     }
 }

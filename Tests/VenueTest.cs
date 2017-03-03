@@ -191,6 +191,8 @@ namespace BandTracker.Objects
             //Assert
             List<Band> actualResult = testVenue.GetBands();
             List<Band> expectedResult = new List<Band> {secondBand, firstBand};
+
+            Assert.Equal(expectedResult, actualResult);
         }
 
         //Delete everything between tests

@@ -111,5 +111,51 @@ namespace BandTracker.Objects
             Band foundBand = Band.Find(testBand.GetId());
             Assert.Equal(testBand, foundBand);
         }
+
+        //Checks that venue is added to list of band's venues
+        [Fact]
+        public void AddVenue_ForVenueAndBand_AddsRowToJoinTable()
+        {
+            //Arrange
+            Venue testVenue = new Venue("The Station");
+            testVenue.Save();
+
+            Band testBand = new Band("Pajama Funnel");
+            testBand.Save();
+
+            //Act
+            testBand.AddVenue(testVenue);
+
+            //Assert
+            List<Venue> actualResult = testBand.GetVenues();
+            List<Venue> expectedResult = new List<Venue>{testVenue};
+
+            Assert.Equal(expectedResult, actualResult);
+        }
+
+        //Checks that all added bands are returned to list of venue's bands
+        [Fact]
+        public void GetVenues_ForBand_ReturnsListOfVenues()
+        {
+            //Arrange
+            Band testBand = new Band("Pajama Funnel");
+            firstBand.Save();
+
+            Venue firstVenue = new Venue("The Station");
+            firstVenue.Save();
+
+            Venue secondVenue = new Venue("Club Fiber");
+            secondVenue.Save();
+
+            //Act
+            testBand.AddVenue(firstVenue);
+            testBand.AddVenue(secondVenue);
+
+            //Assert
+            List<Venue> actualResult = testBand.GetVenues();
+            List<Venue> expectedResult = new List<Venue> {secondVenue, firstVenue};
+
+            Assert.Equal(expectedResult, actualResult);
+        }
     }
 }

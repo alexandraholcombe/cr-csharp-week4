@@ -41,5 +41,16 @@ namespace BandTracker.Objects
             Assert.Equal(expectedResult, actualResult);
         }
 
+        //Checks if EqualOverride is working whatever that does because it clearly does not do what I thought it was doing before
+        [Fact]
+        public void EqualOverride_BandNamesAreSame_true()
+        {
+            //Arrange, Act
+            Band firstBand = new Band("Pajama Funnel");
+            Band secondBand = new Band("Pajama Funnel");
+
+            //Assert
+            Assert.Equal(firstBand, secondBand);
+        }
     }
 }

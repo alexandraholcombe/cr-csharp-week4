@@ -200,7 +200,7 @@ namespace BandTracker.Objects
             SqlConnection conn = DB.Connection();
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("SELECT bands.* FROM venues JOIN bands_venues ON(venues.id = bands_venues.venue_id) JOIN bands ON(bands_venues.band_id = bands.id) WHERE venues.id = @VenueId;", conn);
+            SqlCommand cmd = new SqlCommand("SELECT bands.* FROM venues JOIN bands_venues ON(venues.id = bands_venues.venue_id) JOIN bands ON(bands_venues.band_id = bands.id) WHERE venues.id = @VenueId ORDER BY name;", conn);
             cmd.Parameters.Add(new SqlParameter("@VenueId", this.GetId()));
 
             SqlDataReader rdr = cmd.ExecuteReader();

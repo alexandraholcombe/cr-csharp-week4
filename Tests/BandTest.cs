@@ -13,12 +13,6 @@ namespace BandTracker.Objects
             DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=band_tracker_test;Integrated Security=SSPI;";
         }
 
-        //Delete everything between tests
-        public void Dispose()
-        {
-            Band.DeleteAll();
-        }
-
         //GetAll returns empty list if no bands
         [Fact]
         public void GetAll_ForNoBands_EmptyList()
@@ -139,7 +133,7 @@ namespace BandTracker.Objects
         {
             //Arrange
             Band testBand = new Band("Pajama Funnel");
-            firstBand.Save();
+            testBand.Save();
 
             Venue firstVenue = new Venue("The Station");
             firstVenue.Save();
@@ -156,6 +150,13 @@ namespace BandTracker.Objects
             List<Venue> expectedResult = new List<Venue> {secondVenue, firstVenue};
 
             Assert.Equal(expectedResult, actualResult);
+        }
+        
+        //Delete everything between tests
+        public void Dispose()
+        {
+            Band.DeleteAll();
+            Venue.DeleteAll();
         }
     }
 }

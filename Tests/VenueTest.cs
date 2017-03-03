@@ -199,6 +199,7 @@ namespace BandTracker.Objects
         public void Dispose()
         {
             Venue.DeleteAll();
+            Band.DeleteAll();
         }
     }
 }

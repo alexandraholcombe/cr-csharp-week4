@@ -148,5 +148,58 @@ namespace BandTracker.Objects
             return foundBand;
         }
 
+        //Adds row to join table joining band and venue
+        public void AddVenue(Venue venue)
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO bands_venues (band_id, venue_id) VALUES (@BandId, @VenueId);", conn);
+            cmd.Parameters.Add(new SqlParameter("@VenueId", venue.GetId()));
+            cmd.Parameters.Add(new SqlParameter("@BandId", this.GetId()));
+
+            cmd.ExecuteNonQuery();
+
+            if (conn != null)
+            {
+                conn.Close();
+            }
+        }
+
+        //Returns list with all rows matching venue id from join table
+        public List<Venue> GetVenues()
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT venues.* FROM bands JOIN bands_venues ON(bands.id = bands_venues.band_id) JOIN venues ON(bands_venues.venue_id = venues.id) WHERE bands.id = @BandId ORDER BY name;", conn);
+            cmd.Parameters.Add(new SqlParameter("@BandId", this.GetId()));
+
+            SqlDataReader rdr = cmd.ExecuteReader();
+
+            List<Venue> allVenues = new List<Venue>{};
+
+            while(rdr.Read())
+            {
+                int venueId = rdr.GetInt32(0);
+                string venueName = rdr.GetString(1);
+
+                Venue newVenue = new Venue(venueName, venueId);
+                allVenues.Add(newVenue);
+            }
+
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+
+            if (conn != null)
+            {
+                conn.Close();
+            }
+            return allVenues;
+        }
+
+
     }
 }

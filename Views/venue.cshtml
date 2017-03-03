@@ -3,6 +3,7 @@
 }
 
 <h1>@Model["venue"].GetName()</h1>
+<p><a href="/venues/@Model["venue"].GetId()/edit">edit</a></p>
 
 <ul>
     @foreach(var band in @Model["venueBands"])
@@ -12,6 +13,7 @@
 </ul>
 
 <form action="/venues/@Model["venue"].GetId()" method="post">
+    <input type="hidden" name="venue" value="">
     <select name="band" class="form-control">
         @foreach (var band in @Model["bands"])
         {

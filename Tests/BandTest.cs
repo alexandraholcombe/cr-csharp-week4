@@ -30,7 +30,6 @@ namespace BandTracker.Objects
             Assert.Equal(expectedResult, actualResult);
         }
 
-
         //Checks for bands table has zero rows at beginning of test
         [Fact]
         public void Test_ForNoRowsInBandsTable()
@@ -51,6 +50,21 @@ namespace BandTracker.Objects
 
             //Assert
             Assert.Equal(firstBand, secondBand);
+        }
+
+        //Checks if instances are saved to database
+        [Fact]
+        public void Save_ForBand_SavesToDatabase()
+        {
+            //Arrange
+            Band newBand = new Band("Pajama Funnel");
+
+            //Act
+            newBand.Save();
+
+            //Assert
+            List<Band> actualResult = Band.GetAll();
+            List<Band> expectedResult = new List<Band>{newBand};
         }
     }
 }

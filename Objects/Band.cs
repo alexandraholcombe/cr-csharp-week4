@@ -26,6 +26,23 @@ namespace BandTracker.Objects
             return _id;
         }
 
+        //
+        public override bool Equals(System.Object otherBand)
+        {
+            if(!(otherBand is Band))
+            {
+                return false;
+            }
+            else
+            {
+                Band newBand = (Band) otherBand;
+                bool idEquality = (this.GetId() == newBand.GetId());
+                bool nameEquality = (this.GetName() == newBand.GetName());
+
+                return (idEquality && nameEquality);
+            }
+        }
+
         //Delete all rows in the bands table
         public static void DeleteAll()
         {

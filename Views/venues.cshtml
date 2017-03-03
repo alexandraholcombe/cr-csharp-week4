@@ -3,7 +3,7 @@
 }
 
 <h1>The Venues</h1>
-<ul>
+<ul class="collapsible popout" data-collapsible="accordion">
     @foreach (var venue in @Model)
     {
         <li><a href="#">@venue.GetName()</a></li>
@@ -11,4 +11,5 @@
 </ul>
 
 <p><a href="/">Home</a></p>
+<p><a href="/venues/new">Add Venue</a></p>
 <p><a href="/bands">View All Bands</a></p>

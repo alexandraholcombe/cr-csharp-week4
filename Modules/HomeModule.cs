@@ -96,7 +96,13 @@ namespace BandTracker
             Patch["/venues/{id}"] = parameters => {
                 Venue newVenue = Venue.Find(parameters.id);
                 newVenue.Update(Request.Form["venue"]);
-                return View["venue.cshtml", newVenue];
+                Dictionary<string, object> model = new Dictionary<string, object>(){};
+                List<Band> allBands = Band.GetAll();
+                List<Band> venueBands = newVenue.GetBands();
+                model.Add("venue", newVenue);
+                model.Add("bands", allBands);
+                model.Add("venueBands", venueBands);
+                return View["venue.cshtml", model];
             };
 
             Get["/venues/{id}/edit"] = parameters => {

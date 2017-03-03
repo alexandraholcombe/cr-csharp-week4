@@ -13,11 +13,6 @@ namespace BandTracker.Objects
             DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=band_tracker_test;Integrated Security=SSPI;";
         }
 
-        //Delete everything between tests
-        public void Dispose()
-        {
-            Venue.DeleteAll();
-        }
 
         //GetAll returns empty list if no venues
         [Fact]
@@ -110,6 +105,31 @@ namespace BandTracker.Objects
             //Act, Assert
             Venue foundVenue = Venue.Find(testVenue.GetId());
             Assert.Equal(testVenue, foundVenue);
+        }
+
+        //Checks that Update method changes name of Venue
+        [Fact]
+        public void Update_ForVenueName_ReturnsVenueWithNewNameSameId()
+        {
+            //Arrange
+            Venue testVenue = new Venue("Club Fibur");
+            testVenue.Save();
+
+            //Act
+            string newName = "Club Fiber";
+            testVenue.Update(newName);
+
+            //Assert
+            string actualResult = testVenue.GetName();
+            string expectedResult = newName;
+
+            Assert.Equal(expectedResult, actualResult);            
+        }
+
+        //Delete everything between tests
+        public void Dispose()
+        {
+            Venue.DeleteAll();
         }
     }
 }

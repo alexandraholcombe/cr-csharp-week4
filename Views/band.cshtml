@@ -1,0 +1,19 @@
+@{
+    Layout="Shared/_Layout.cshtml";
+}
+
+<h1>@Model["band"].GetName()</h1>
+
+<form action="index.html" method="post">
+    <select name="venue">
+        @foreach (var venue in @Model["venues"])
+        {
+            <option value="@venue.GetId()">@venue.GetName()</option>
+        }
+    </select>
+    <button type="submit" name="button">Add Venue</button>
+</form>
+
+<p><a href="/bands">Back</a></p>
+<p><a href="/">Home</a></p>
+<p><a href="/venues">View All Venues</a></p>

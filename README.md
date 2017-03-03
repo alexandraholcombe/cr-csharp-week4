@@ -167,7 +167,7 @@ This web application uses:
 * Razor
 * MSSQL & SSMS
 * All band names generated at [BandNameMaker.com](http://www.bandnamemaker.com/)
-* All venue names generated at [Nightclub Name Generator](http://fantasynamegenerators.com/nightclub-names.php)
+* All venue names generated at [Nightclub Name Generator](http://fantasynamegenerators.com/nightclub-names.php) and [WordLab](http://www.wordlab.com/name-generators/restaurant-bar-name-generator/)
 
 ***
 

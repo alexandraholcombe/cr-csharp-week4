@@ -31,12 +31,15 @@ namespace BandTracker.Objects
         }
 
 
-        // //Checks for bands table has zero rows at beginning of test
-        // [Fact]
-        // public void Test_ForNoRowsInBandsTable()
-        // {
-        //     int actualResult = Band.GetAll();
-        // }
+        //Checks for bands table has zero rows at beginning of test
+        [Fact]
+        public void Test_ForNoRowsInBandsTable()
+        {
+            int actualResult = Band.GetAll().Count;
+            int expectedResult = 0;
+
+            Assert.Equal(expectedResult, actualResult);
+        }
 
     }
 }

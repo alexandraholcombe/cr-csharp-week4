@@ -25,5 +25,18 @@ namespace BandTracker.Objects
         {
             return _id;
         }
+
+        //Delete all rows in the bands table
+        public static void DeleteAll()
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("DELETE FROM bands;", conn);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
     }
 }

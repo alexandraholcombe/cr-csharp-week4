@@ -3,7 +3,14 @@
 }
 
 <h1>@Model["venue"].GetName()</h1>
-<p><a href="/venues/@Model["venue"].GetId()/edit">edit</a> <a href="/venues/@Model["venue"].GetId()/delete">delete</a></p>
+<span>
+    <a href="/venues/@Model["venue"].GetId()/edit" class="btn">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+    </a>
+    <a href="/venues/@Model["venue"].GetId()/delete" class="btn">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    </a>
+</span>
 
 <ul>
     @foreach(var band in @Model["venueBands"])

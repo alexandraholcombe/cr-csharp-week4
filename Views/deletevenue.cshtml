@@ -6,9 +6,9 @@
 
 <h3>Are you sure you want to delete @Model.GetName()?</h3>
 
-<form action="/venues/@Model.GetId()" method="post">
-    <input type="hidden" name="" value="">
-    <button type="submit" class="btn">Change</button>
+<form action="/venues/@Model.GetId()/delete" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit" class="btn">Delete</button>
 </form>
 
 <p><a href="/venues/@Model.GetId()">Back to @Model.GetName()</a></p>

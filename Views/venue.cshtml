@@ -3,7 +3,7 @@
 }
 
 <h1>@Model["venue"].GetName()</h1>
-<p><a href="/venues/@Model["venue"].GetId()/edit">edit</a></p>
+<p><a href="/venues/@Model["venue"].GetId()/edit">edit</a> <a href="/venues/@Model["venue"].GetId()/delete">delete</a></p>
 
 <ul>
     @foreach(var band in @Model["venueBands"])
